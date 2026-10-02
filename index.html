@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quynh Anh Pham | Portfolio & CV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --text-color: #000000;
+            --accent-color: #2b4c7e;
+            --accent-light: #e8f1f5;
+            --card-bg: #ffffff;
+            --border-color: #cbd5e1;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        header {
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-top {
+            max-width: 900px;
+            margin: 0 auto 1rem auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .profile-container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            text-align: left;
+            flex-wrap: wrap;
+        }
+        .avatar {
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-light);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .profile-info h1 { font-size: 1.8rem; font-weight: 700; color: #000000; }
+        .profile-info p { color: #111111; font-size: 0.95rem; margin-top: 0.2rem; font-weight: 500; }
+        
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .lang-btn {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: #000000;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .lang-btn.active, .lang-btn:hover {
+            background: var(--accent-color);
+            color: #ffffff;
+            border-color: var(--accent-color);
+        }
+
+        nav {
+            margin-top: 0.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        nav a {
+            text-decoration: none;
+            color: #000000;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--accent-color); }
+        .container {
+            max-width: 900px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+        }
+        section {
+            margin-bottom: 3rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+        }
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.25rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 1rem;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+        }
+        .card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.3rem; color: #000000; }
+        .card h4 { font-size: 0.95rem; font-weight: 600; color: var(--accent-color); margin-bottom: 0.5rem; }
+        .card p, .card li { font-size: 0.9rem; color: #111111; font-weight: 400; }
+        .card ul { padding-left: 1.2rem; margin-top: 0.5rem; }
+        
+        .btn-proof {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--accent-light);
+            color: #000000;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 0.5rem;
+        }
+        .btn-proof:hover { background: #d4e4f1; }
+        
+        .skills-list {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            color: #111111;
+        }
+        .skills-list li { margin-bottom: 0.5rem; font-weight: 400; }
+        
+        .lang-content { display: none; }
+        .lang-content.active { display: block; }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #000000;
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            background: var(--card-bg);
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-top">
+            <div class="profile-container">
+                <img src="picture.jpg" alt="Quynh Anh Pham" class="avatar">
+                <div class="profile-info">
+                    <h1>Quynh Anh Pham</h1>
+                    <p>Học viên cao học Tài chính & Cố vấn học tập | NCU Đài Loan</p>
+                    <p style="font-size: 0.85rem; color: #475569; margin-top: 0.2rem;">Taoyuan City, Taiwan | (+886) 0967269105 | phamquynhanh.wrk@gmail.com</p>
+                </div>
+            </div>
+            <div class="lang-switcher">
+                <button class="lang-btn active" onclick="switchLang('vi')">Tiếng Việt</button>
+                <button class="lang-btn" onclick="switchLang('en')">English</button>
+                <button class="lang-btn" onclick="switchLang('zh')">中文</button>
+            </div>
+        </div>
+        <nav>
+            <a href="#about" id="nav-about">Giới thiệu & Hồ sơ</a>
+            <a href="#experience" id="nav-experience">Kinh nghiệm</a>
+            <a href="#research" id="nav-research">Bài báo nghiên cứu</a>
+            <a href="#projects" id="nav-projects">Dự án & Thiết kế</a>
+            <a href="#certificates" id="nav-certificates">Chứng chỉ & Minh chứng</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- VỀ TÔI & HỌC VẤN -->
+        <section id="about">
+            <div id="about-vi" class="lang-content active">
+                <h2><i class="fa-solid fa-user"></i> Tổng quan & Học vấn</h2>
+                <p style="margin-bottom: 1.2rem; font-weight: 400;">
+                    Là một cố vấn học tập tận tâm, thấu cảm và là học viên cao học ngành Tài chính tại Đại học Trung ương Quốc gia (NCU), tôi có bề dày kinh nghiệm thực tế trong việc định hướng kế hoạch học tập, hỗ trợ quy trình xin học bổng và giúp học viên thích nghi văn hóa. Thành thạo kỹ năng giao tiếp đa văn hóa, tư vấn cá nhân hóa và định hướng học thuật.
+                </p>
+                
+                <h3 style="font-size: 1.1rem; margin: 1rem 0 0.5rem 0;">Học vấn</h3>
+                <div class="card">
+                    <h3>Thạc sĩ Tài chính (Master: Finance)</h3>
+                    <h4>National Central University - Taoyuan City, Taiwan (Dự kiến tốt nghiệp: 2027-07)</h4>
+                </div>
+                <div class="card">
+                    <h3>Cử nhân Tài chính (Chương trình liên kết/hợp tác)</h3>
+                    <h4>Feng Chia University (Taichung) & Ton Duc Thang University (Ho Chi Minh City) (2025-07)</h4>
+                    <p>• Hoàn thành chương trình đào tạo cử nhân liên kết hợp tác giữa Đại học Phùng Giáp (FCU) và Đại học Tôn Đức Thắng (TDTU).</p>
+                    <p>• GPA: 4.0/4.3.</p>
+                </div>
+                <div class="card">
+                    <h3>Cử nhân Tài chính (Bachelor: Finance)</h3>
+                    <h4>Ton Duc Thang University - Ho Chi Minh, Vietnam (2023-08)</h4>
+                    <p>• Xếp hạng top 10% của lớp | Đạt danh hiệu Sinh viên xuất sắc (Dean's List).</p>
+                    <p>• Thực tập bộ phận Khách hàng cá nhân (Mảng Chứng khoán), Korea Investment & Securities Vietnam (KIS), Chi nhánh TP.HCM (Hoàn thành tháng 08/2023).</p>
+                </div>
+
+                <div style="margin-top: 1.5rem;">
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Kỹ năng & Ngôn ngữ</h3>
+                    <ul class="skills-list">
+                        <li><strong>Kỹ năng cốt lõi:</strong> Cố vấn học tập & Tư vấn hướng nghiệp, Giao tiếp đa văn hóa, Thiết kế học liệu & Trải nghiệm học tập, Viết học thuật, Phân tích dữ liệu & Nghiên cứu (R, Python, Stata, Econometrics), Quản lý dự án.</li>
+                        <li><strong>Kỹ năng thiết kế:</strong> Thiết kế học liệu, slide chuyên nghiệp & Thiết kế poster cơ bản bằng <strong>Canva</strong>.</li>
+                        <li><strong>Phần mềm & Công cụ:</strong> MOS Word (838/1000 - Very Good), MOS Excel (920/1000 - Advanced), R, Python (Good), Stata, EViews, Refinitiv Eikon, TEJ (Very Good).</li>
+                        <li><strong>Ngôn ngữ:</strong> Tiếng Việt (Bản ngữ - Native speaker), Tiếng Anh (Trung cao cấp - B2), Tiếng Trung (Mandarin - Trung cấp - B1).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="about-en" class="lang-content">
+                <h2><i class="fa-solid fa-user"></i> Summary & Education</h2>
+                <p style="margin-bottom: 1.2rem; font-weight: 400;">
+                    Dedicated and empathetic student mentor and Finance Master's student at National Central University, with hands-on experience in guiding students through academic planning, scholarship application processes, and cultural adaptation. Skilled in cross-cultural communication, customized counseling, and academic guidance.
+                </p>
+                
+                <h3 style="font-size: 1.1rem; margin: 1rem 0 0.5rem 0;">Education</h3>
+                <div class="card">
+                    <h3>Master: Finance</h3>
+                    <h4>National Central University - Taoyuan City, Taiwan (Expected 2027-07)</h4>
+                </div>
+                <div class="card">
+                    <h3>Bachelor: Finance (Joint/Linked Program)</h3>
+                    <h4>Feng Chia University (Taichung) & Ton Duc Thang University (Ho Chi Minh City) (2025-07)</h4>
+                    <p>• Completed a collaborative joint Bachelor's program between Feng Chia University and Ton Duc Thang University.</p>
+                    <p>• GPA: 4.0/4.3.</p>
+                </div>
+                <div class="card">
+                    <h3>Bachelor: Finance</h3>
+                    <h4>Ton Duc Thang University - Ho Chi Minh, Vietnam (2023-08)</h4>
+                    <p>• Ranked top 10% in Class | Graduation Dean's List.</p>
+                    <p>• Intern Individual Customers Stock, Korea Investment & Securities Vietnam (KIS), Ho Chi Minh Branch (Completed 08/2023).</p>
+                </div>
+
+                <div style="margin-top: 1.5rem;">
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Skills & Languages</h3>
+                    <ul class="skills-list">
+                        <li><strong>Core Skills:</strong> Student Mentoring & Academic Counseling, Cross-Cultural Communication, Curriculum & Learning Experience Design, Academic Writing, Data Analysis & Research (R, Python, Stata, Econometrics), Project Management.</li>
+                        <li><strong>Design Skills:</strong> Curriculum design, professional slides & Basic poster design via <strong>Canva</strong>.</li>
+                        <li><strong>Software:</strong> MOS Word (838/1000 - Very Good), MOS Excel (920/1000 - Advanced), R, Python (Good), Stata, EViews, Refinitiv Eikon, TEJ (Very Good).</li>
+                        <li><strong>Languages:</strong> Vietnamese (Native speaker), English (Upper intermediate - B2), Chinese (Mandarin - Intermediate - B1).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="about-zh" class="lang-content">
+                <h2><i class="fa-solid fa-user"></i> 簡介與學歷</h2>
+                <p style="margin-bottom: 1.2rem; font-weight: 400;">
+                    身為一位專注且具同理心的學生導師，同時也是國立中央大學財務金融學系碩士生，我擁有豐富的實務經驗，能指引學生進行學術規劃、獎學金申請流程及文化適應。擅長跨文化溝通、客製化輔導與學術指引。
+                </p>
+                
+                <h3 style="font-size: 1.1rem; margin: 1rem 0 0.5rem 0;">學歷 (Education)</h3>
+                <div class="card">
+                    <h3>財務金融碩士 (Master: Finance)</h3>
+                    <h4>國立中央大學 - 臺灣桃園市 (預計 2027-07 畢業)</h4>
+                </div>
+                <div class="card">
+                    <h3>財務金融學士 (聯結學位專案)</h3>
+                    <h4>逢甲大學 (臺中) & 孫德勝大學 (胡志明市) (2025-07)</h4>
+                    <p>• 完成逢甲大學與孫德勝大學之雙聯學士合作專案。</p>
+                    <p>• GPA: 4.0/4.3。</p>
+                </div>
+                <div class="card">
+                    <h3>財務金融學士 (Bachelor: Finance)</h3>
+                    <h4>孫德勝大學 - 越南胡志明市 (2023-08)</h4>
+                    <p>• 班級排名前 10% | 院長名單獎 (Graduation Dean's List)。</p>
+                    <p>• 韓國投資證券越南分公司 (KIS) 散戶股票實習生 (2023年8月完成)。</p>
+                </div>
+
+                <div style="margin-top: 1.5rem;">
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">技能與語言</h3>
+                    <ul class="skills-list">
+                        <li><strong>核心能力：</strong> 學生輔導與學術諮商、跨文化溝通、課程與學習體驗設計、學術寫作、數據分析與研究 (R, Python, Stata, 計量經濟學)、專案管理。</li>
+                        <li><strong>設計技能：</strong> 教材設計、專業簡報與透過 <strong>Canva</strong> 進行基礎海報設計。</li>
+                        <li><strong>軟體：</strong> MOS Word (838/1000 - Very Good), MOS Excel (920/1000 - Advanced), R, Python (Good), Stata, EViews, Refinitiv Eikon, TEJ (Very Good)。</li>
+                        <li><strong>語言能力：</strong> 越南文 (Native speaker), 英文 (Upper intermediate - B2), 中文/普通話 (Intermediate - B1)。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- KINH NGHIỆM LÀM VIỆC -->
+        <section id="experience">
+            <div id="exp-vi" class="lang-content active">
+                <h2><i class="fa-solid fa-briefcase"></i> Kinh nghiệm làm việc</h2>
+                <div class="card">
+                    <h3>Gia sư & Cố vấn học tập (Tutor and Mentor)</h3>
+                    <h4>Cá nhân, Từ xa (2025-08 - Hiện tại)</h4>
+                    <ul>
+                        <li>Cố vấn và hướng dẫn học viên hoàn thành thành công quy trình xin học bổng Đài Loan và xét tuyển đại học, đạt kết quả trúng tuyển vào 2 trường đại học công lập và 1 trường đại học tư thục.</li>
+                        <li>Thiết kế và giảng dạy chương trình giáo trình tiếng Trung chuyên sâu, giúp học viên đạt trình độ ngoại ngữ A2 chỉ trong khoảng thời gian ngắn 4 tháng (từ tháng 8 đến tháng 12).</li>
+                        <li>Sử dụng các công cụ học tập tương tác và chiến lược luyện tập trọng tâm để tăng tốc độ tiếp thu ngôn ngữ, giúp học viên tự tin giao tiếp và sẵn sàng cho các kỳ thi.</li>
+                        <li>Cung cấp sự hỗ trợ toàn diện về mặt học tập và định hướng chiến lược hồ sơ, bao gồm việc chuẩn bị tài liệu đáp ứng yêu cầu du học quốc tế.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Trợ lý nghiên cứu (Research Assistant)</h3>
+                    <h4>Trung tâm Nghiên cứu Tài chính và Kinh tế Ứng dụng - Đại học Tôn Đức Thang, Từ xa (2024-03 - Hiện tại)</h4>
+                    <ul>
+                        <li>Thực hiện phân tích dữ liệu định lượng và mô hình hóa kinh tế lượng bằng RStudio (bao gồm các hồi quy OLS, 2SLS, System GMM, Fixed Effects và LASSO), kết hợp kiểm định độ bền vững nghiêm ngặt.</li>
+                        <li>Thực hiện tổng quan tài liệu toàn diện, thu thập nguồn tài liệu học thuật và quản lý trích dẫn hiệu quả bằng các công cụ như Zotero.</li>
+                        <li>Hỗ trợ xây dựng đề xuất nghiên cứu, xác định khoảng trống nghiên cứu và thiết lập khung phương pháp luận cho các nghiên cứu tài chính và kinh tế.</li>
+                        <li>Quản lý và làm sạch các bộ dữ liệu phức tạp, đảm bảo độ chính xác và độ tin cậy cao cho các dự án nghiên cứu thực nghiệm.</li>
+                    </ul>
+                </div>
+            </div>
+            <div id="exp-en" class="lang-content">
+                <h2><i class="fa-solid fa-briefcase"></i> Professional & Counseling Experience</h2>
+                <div class="card">
+                    <h3>Tutor and Mentor</h3>
+                    <h4>Personal, Remote (2025-08 - Current)</h4>
+                    <ul>
+                        <li>Mentored and guided a student through successful Taiwan scholarship application processes and university admissions, resulting in acceptances into 2 national universities and 1 private university.</li>
+                        <li>Designed and delivered intensive customized Chinese language curricula that enabled a student to achieve an A2 proficiency level within a short 4-month period (August to December).</li>
+                        <li>Utilized interactive learning tools and targeted practice strategies to accelerate language acquisition, significantly boosting the student's conversational fluency and test readiness.</li>
+                        <li>Provided end-to-end academic mentoring and strategic application support, including document preparation tailored to overseas study requirements.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Research Assistant</h3>
+                    <h4>Center for Applied Finance and Economics - Ton Duc Thang University, Remote (2024-03 - Current)</h4>
+                    <ul>
+                        <li>Conducted quantitative data analysis and econometric modeling using RStudio (including OLS, 2SLS, System GMM, Fixed Effects, and LASSO regressions), alongside rigorous robustness checks.</li>
+                        <li>Performed comprehensive literature reviews, gathered academic sources, and managed citations efficiently using reference tools such as Zotero.</li>
+                        <li>Assisted in formulating research proposals, identifying research gaps, and structuring methodological frameworks for finance and economic studies.</li>
+                        <li>Managed and cleaned complex datasets, ensuring high data accuracy and reliability for empirical research projects.</li>
+                    </ul>
+                </div>
+            </div>
+            <div id="exp-zh" class="lang-content">
+                <h2><i class="fa-solid fa-briefcase"></i> 專業與輔導經驗</h2>
+                <div class="card">
+                    <h3>家教與學生導師 (Tutor and Mentor)</h3>
+                    <h4>個人，遠端 (2025-08 - 至今)</h4>
+                    <ul>
+                        <li>輔導並指導學生順利完成臺灣獎學金申請及大學入學流程，成功錄取 2 所國立大學與 1 所私立大學。</li>
+                        <li>設計並教授密集客製化中文課程，協助學生在短短 4 個月內（8月至12月）達到 A2 級別能力。</li>
+                        <li>運用互動式學習工具與針對性練習策略加速語言習得，顯著提升學生的口語流利度與應試準備度。</li>
+                        <li>提供端到端的學術輔導與策略性申請支援，包括針對海外留學需求量身打造的文件準備。</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>研究助理 (Research Assistant)</h3>
+                    <h4>孫德勝大學應用財務與經濟學研究中心，遠端 (2024-03 - 至今)</h4>
+                    <ul>
+                        <li>使用 RStudio 進行量化數據分析與計量經濟模型建構（包含 OLS, 2SLS, System GMM, Fixed Effects, LASSO 迴歸），並執行嚴謹的穩健性檢定。</li>
+                        <li>進行全面的文獻綜述、收集學術資源，並使用 Zotero 等參考文獻工具高效管理引用文獻。</li>
+                        <li>協助制定研究計畫、識別研究缺口，並為財務與經濟研究建構方法論架構。</li>
+                        <li>管理並清理複雜數據集，確保實證研究項目的數據高度準確與可靠。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- BÀI BÁO NGHIÊN CỨU -->
+        <section id="research">
+            <div id="research-vi" class="lang-content active">
+                <h2><i class="fa-solid fa-book-open"></i> Bài báo & Nghiên cứu Khoa học</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>PLOS One</h3>
+                        <p>Research Publication (DOI: 10.1371/journal.pone.0330723)</p>
+                        <a href="https://doi.org/10.1371/journal.pone.0330723" target="_blank" class="btn-proof"><i class="fa-solid fa-link"></i> Xem bài báo (DOI Link)</a>
+                    </div>
+                    <div class="card">
+                        <h3>Asian Journal of Business Ethics</h3>
+                        <p>Research Publication (DOI: 10.1007/s13520-026-00256-0)</p>
+                        <a href="https://doi.org/10.1007/s13520-026-00256-0" target="_blank" class="btn-proof"><i class="fa-solid fa-link"></i> Xem bài báo (DOI Link)</a>
+                    </div>
+                </div>
+            </div>
+            <div id="research-en" class="lang-content">
+                <h2><i class="fa-solid fa-book-open"></i> Publications & Research</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>PLOS One</h3>
+                        <p>Research Publication (DOI: 10.1371/journal.pone.0330723)</p>
+                        <a href="https://doi.org/10.1371/journal.pone.0330723" target="_blank" class="btn-proof"><i class="fa-solid fa-link"></i> View Publication (DOI Link)</a>
+                    </div>
+                    <div class="card">
+                        <h3>Asian Journal of Business Ethics</h3>
+                        <p>Research Publication (DOI: 10.1007/s13520-026-00256-0)</p>
+                        <a href="https://doi.org/10.1007/s13520-026-00256-0" target="_blank" class="btn-proof"><i class="fa-solid fa-link"></i> View Publication (DOI Link)</a>
+                    </div>
+                </div>
+            </div>
+            <div id="research-zh" class="lang-content">
+                <h2><i class="fa-solid fa-book-open"></i> 學術論文與研究</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>PLOS One</h3>
+                        <p>學術期刊論文 (DOI: 10.1371/journal.pone.0330723)</p>
+                        <a href="https://doi.org/10.1371/journal.pone.0330723" target="_blank" class="btn-proof"><i class="fa-solid fa-link"></i> 查看論文 (DOI 連結)</a>
+                    </div>
+                    <div class="card">
+                        <h3>Asian Journal of Business Ethics</h3>
+                        <p>學術期刊論文 (DOI: 10.1007/s13520-026-00256-0)</p>
+                        <a href="https://doi.org/10.1007/s13520-026-00256-0" target="_blank" class="btn-proof"><i class="fa-solid fa-link"></i> 查看論文 (DOI 連結)</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DỰ ÁN & THIẾT KẾ -->
+        <section id="projects">
+            <div id="projects-vi" class="lang-content active">
+                <h2><i class="fa-solid fa-palette"></i> Dự án & Sản phẩm Thiết kế</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Design 1 (PDF)</h3>
+                        <p>Tài liệu dự án và thiết kế trực quan.</p>
+                        <a href="Design1.pdf" target="_blank" class="btn-proof"><i class="fa-solid fa-file-pdf"></i> Xem file PDF</a>
+                    </div>
+                    <div class="card">
+                        <h3>Design 2 (PDF)</h3>
+                        <p>Tài liệu dự án và thiết kế trực quan.</p>
+                        <a href="Design2.pdf" target="_blank" class="btn-proof"><i class="fa-solid fa-file-pdf"></i> Xem file PDF</a>
+                    </div>
+                    <div class="card">
+                        <h3>Design 3 (PDF)</h3>
+                        <p>Tài liệu dự án và thiết kế trực quan.</p>
+                        <a href="Design3.pdf" target="_blank" class="btn-proof"><i class="fa-solid fa-file-pdf"></i> Xem file PDF</a>
+                    </div>
+                    <div class="card">
+                        <h3>Design 4 (PDF)</h3>
+                        <p>Tài liệu dự án và thiết kế trực quan.</p>
+                        <a href="Design4.pdf" target="_blank" class="btn-proof"><i class="fa-solid fa-file-pdf"></i> Xem file PDF</a>
+                    </div>
+                </div>
+            </div>
+            <div id="projects-en" class="lang-content">
+                <h2><i class="fa-solid fa-palette"></i> Projects & Design Works</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Design 1 (PDF)</h3>
+                        <p>Project documentation and visual design.</p>
+                        <a href="Design1.pdf" target="_blank" class="btn-proof"><i class="fa-solid fa-file-pdf"></i> View PDF</a>
+                    </div>
+                    <div class="card">
+                        <h3>Design 2 (PDF)</h3>
+                        <p>Project documentation and visual design.</p>
+                        <a href="Design2.pdf" target="_blank" class="btn-proof"><i class="fa-solid fa-file-pdf"></i> View PDF</a>
+                    </div>
+                    <div class="card">
+                        <h3>Design 3 (PDF)</h3>
+                        <p>Project documentation and visual design.</p>
+                        <a href="Design3.pdf" target="_blank" class="btn-proof"><i class="fa-solid fa-file-pdf"></i> View PDF</a>
+                    </div>
+                    <div class="card">
+                        <h3>Design 4 (PDF)</h3>
+                        <p>Project documentation and visual design.</p>
+                        <a href="Design4.pdf" target="_blank" class="btn-proof"><i class="fa-solid fa-file-pdf"></i> View PDF</a>
+                    </div>
+                </div>
+            </div>
+            <div id="projects-zh" class="lang-content">
+                <h2><i class="fa-solid fa-palette"></i> 專案與設計作品</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>設計 1 (PDF)</h3>
+                        <p>專案文檔與視覺設計。</p>
+                        <a href="Design1.pdf" target="_blank" class="btn-proof"><i class="fa-solid fa-file-pdf"></i> 查看 PDF</a>
+                    </div>
+                    <div class="card">
+                        <h3>設計 2 (PDF)</h3>
+                        <p>專案文檔與視覺設計。</p>
+                        <a href="Design2.pdf" target="_blank" class="btn-proof"><i class="fa-solid fa-file-pdf"></i> 查看 PDF</a>
+                    </div>
+                    <div class="card">
+                        <h3>設計 3 (PDF)</h3>
+                        <p>專案文檔與視覺設計。</p>
+                        <a href="Design3.pdf" target="_blank" class="btn-proof"><i class="fa-solid fa-file-pdf"></i> 查看 PDF</a>
+                    </div>
+                    <div class="card">
+                        <h3>設計 4 (PDF)</h3>
+                        <p>專案文檔與視覺設計。</p>
+                        <a href="Design4.pdf" target="_blank" class="btn-proof"><i class="fa-solid fa-file-pdf"></i> 查看 PDF</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHỨNG CHỈ -->
+        <section id="certificates">
+            <div id="certificates-vi" class="lang-content active">
+                <h2><i class="fa-solid fa-certificate"></i> Chứng chỉ & Ngoại ngữ</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Chinese Certificate</h3>
+                        <p>Chứng chỉ năng lực tiếng Trung.</p>
+                        <a href="Chinese-Certificate.pdf" target="_blank" class="btn-proof"><i class="fa-solid fa-file-pdf"></i> Xem chứng chỉ PDF</a>
+                    </div>
+                    <div class="card">
+                        <h3>IELTS Certificate</h3>
+                        <p>Chứng chỉ tiếng Anh quốc tế.</p>
+                        <a href="IELTS.pdf" target="_blank" class="btn-proof"><i class="fa-solid fa-file-pdf"></i> Xem chứng chỉ PDF</a>
+                    </div>
+                    <div class="card">
+                        <h3>MOS Word</h3>
+                        <p>Điểm số: 838/1000 - Very Good</p>
+                        <a href="mos_word.pdf" target="_blank" class="btn-proof"><i class="fa-solid fa-file-pdf"></i> Xem chứng chỉ PDF</a>
+                    </div>
+                    <div class="card">
+                        <h3>MOS Excel</h3>
+                        <p>Điểm số: 920/1000 - Advanced</p>
+                        <a href="mos_excel.pdf" target="_blank" class="btn-proof"><i class="fa-solid fa-file-pdf"></i> Xem chứng chỉ PDF</a>
+                    </div>
+                </div>
+            </div>
+            <div id="certificates-en" class="lang-content">
+                <h2><i class="fa-solid fa-certificate"></i> Certificates & Languages</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Chinese Certificate</h3>
+                        <p>Chinese language proficiency certificate.</p>
+                        <a href="Chinese-Certificate.pdf" target="_blank" class="btn-proof"><i class="fa-solid fa-file-pdf"></i> View PDF</a>
+                    </div>
+                    <div class="card">
+                        <h3>IELTS Certificate</h3>
+                        <p>International English certificate.</p>
+                        <a href="IELTS.pdf" target="_blank" class="btn-proof"><i class="fa-solid fa-file-pdf"></i> View PDF</a>
+                    </div>
+                    <div class="card">
+                        <h3>MOS Word</h3>
+                        <p>Score: 838/1000 - Very Good</p>
+                        <a href="mos_word.pdf" target="_blank" class="btn-proof"><i class="fa-solid fa-file-pdf"></i> View PDF</a>
+                    </div>
+                    <div class="card">
+                        <h3>MOS Excel</h3>
+                        <p>Score: 920/1000 - Advanced</p>
+                        <a href="mos_excel.pdf" target="_blank" class="btn-proof"><i class="fa-solid fa-file-pdf"></i> View PDF</a>
+                    </div>
+                </div>
+            </div>
+            <div id="certificates-zh" class="lang-content">
+                <h2><i class="fa-solid fa-certificate"></i> 證照與語言能力</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>中文證照 (Chinese Certificate)</h3>
+                        <p>中文能力證明文件。</p>
+                        <a href="Chinese-Certificate.pdf" target="_blank" class="btn-proof"><i class="fa-solid fa-file-pdf"></i> 查看 PDF</a>
+                    </div>
+                    <div class="card">
+                        <h3>IELTS 證照</h3>
+                        <p>國際英文檢定證明。</p>
+                        <a href="IELTS.pdf" target="_blank" class="btn-proof"><i class="fa-solid fa-file-pdf"></i> 查看 PDF</a>
+                    </div>
+                    <div class="card">
+                        <h3>MOS Word</h3>
+                        <p>成績：838/1000 - Very Good</p>
+                        <a href="mos_word.pdf" target="_blank" class="btn-proof"><i class="fa-solid fa-file-pdf"></i> 查看 PDF</a>
+                    </div>
+                    <div class="card">
+                        <h3>MOS Excel</h3>
+                        <p>成績：920/1000 - Advanced</p>
+                        <a href="mos_excel.pdf" target="_blank" class="btn-proof"><i class="fa-solid fa-file-pdf"></i> 查看 PDF</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Quynh Anh Pham. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function switchLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+            document.getElementById('about-' + lang).classList.add('active');
+            document.getElementById('exp-' + lang).classList.add('active');
+            document.getElementById('research-' + lang).classList.add('active');
+            document.getElementById('projects-' + lang).classList.add('active');
+            document.getElementById('certificates-' + lang).classList.add('active');
+
+            if(lang === 'vi') {
+                document.getElementById('nav-about').innerText = "Giới thiệu & Hồ sơ";
+                document.getElementById('nav-experience').innerText = "Kinh nghiệm";
+                document.getElementById('nav-research').innerText = "Bài báo nghiên cứu";
+                document.getElementById('nav-projects').innerText = "Dự án & Thiết kế";
+                document.getElementById('nav-certificates').innerText = "Chứng chỉ & Minh chứng";
+            } else if(lang === 'en') {
+                document.getElementById('nav-about').innerText = "About & Education";
+                document.getElementById('nav-experience').innerText = "Experience";
+                document.getElementById('nav-research').innerText = "Publications";
+                document.getElementById('nav-projects').innerText = "Projects & Design";
+                document.getElementById('nav-certificates').innerText = "Certificates & Proofs";
+            } else if(lang === 'zh') {
+                document.getElementById('nav-about').innerText = "簡介與學歷";
+                document.getElementById('nav-experience').innerText = "專業經驗";
+                document.getElementById('nav-research').innerText = "學術論文";
+                document.getElementById('nav-projects').innerText = "專案與設計";
+                document.getElementById('nav-certificates').innerText = "證照證明";
+            }
+        }
+    </script>
+</body>
+</html>
